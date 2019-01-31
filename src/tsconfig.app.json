@@ -7,5 +7,10 @@
   "exclude": [
     "test.ts",
     "**/*.spec.ts"
-  ]
+  ],
+  "baseUrl": "src",
+  "paths": {
+    "@app/*": ["app/*"],
+    "@jogos/*": ["app/jogos/*"]
+  }
 }
