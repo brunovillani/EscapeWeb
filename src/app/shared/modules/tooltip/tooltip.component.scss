@@ -1,0 +1,85 @@
+@import '../../../../assets/styles/base/_variables';
+@import '../../../../assets/styles/base/_mixins';
+
+.tooltip {
+    background-color: $black-color;
+    border-radius: 4px;
+    position: absolute;
+    color: #fff;
+    padding: 16px;
+    z-index: 100;
+
+    @include elevation;
+
+    p {
+        width: max-content;
+    }
+
+    .title {
+        margin-bottom: 8px;
+        line-height: 20px;
+        font-weight: 600;
+        font-size: 14px;
+
+        &--center {
+            text-align: center;
+        }
+
+        &--left {
+            text-align: left;
+        }
+    }
+
+    .description {
+      white-space: pre-wrap;
+      line-height: 14px;
+      font-size: 12px;
+      margin: 0;
+    }
+
+    &--no-display{
+      display: none;
+    }
+
+    &--fixedWidth {
+        width: 280px;
+        p {
+            width: initial;
+        }
+    }
+
+    &--small {
+      .description {
+        font-size: 10px;
+        font-weight: 300;
+      }
+    }
+}
+
+.tooltip-arrow {
+    border: 12px solid transparent;
+    position: absolute;
+    display: block;
+    z-index: 101;
+    height: 0px;
+    width: 0;
+    
+    &.tooltip--no-display{
+      display: none;
+    }
+
+    &--above {
+        border-top: 16px solid;
+        border-top-color: $black-color;
+    }
+
+    &--below {
+        border-bottom: 16px solid;
+        border-bottom-color: $black-color;
+    }
+
+    &--right {
+        border-right: 16px solid;
+        border-right-color: $black-color;
+    }
+}

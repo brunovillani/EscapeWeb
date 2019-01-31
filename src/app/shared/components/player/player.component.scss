@@ -1,0 +1,19 @@
+.player {
+    display: flex;
+
+    .botoes-grupo {
+        & > .mat-button {
+            border-radius: 0px !important;
+        }
+
+        & > *:first-child {
+            border-top-left-radius: 28px !important;
+            border-bottom-left-radius: 28px !important;
+        }
+
+        & > *:last-child {
+            border-top-right-radius: 28px !important;
+            border-bottom-right-radius: 28px !important;
+        }
+    }
+}

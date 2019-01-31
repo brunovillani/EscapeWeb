@@ -1,0 +1,79 @@
+@import "../../../../assets/styles/base/_mixins";
+
+$default-flex-basis: 300px;
+$default-flex-shrink: 1;
+
+.filter {
+  overflow: hidden;
+  max-height: 0;
+
+  @include transition;
+
+  .clear {
+    padding-left: 16px;
+  }
+
+  .filters {
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 32px;
+    display: flex;
+
+    .field {
+      flex: 0 $default-flex-shrink $default-flex-basis;
+      padding: 0 8px;
+      display: flex;
+
+      .mat-form-field {
+          width: 100%;
+      }
+    }
+  }
+
+  &.opened {
+    max-height: 80px;
+  }
+
+  &.column {
+    max-height: unset;
+
+    .filters {
+      flex-direction: column;
+
+      .field {
+        flex: 0 0 100%;
+        width: 100%;
+
+        .checkbox-filter{
+          display: flex;
+          font-size: 12px;
+          margin-bottom: 24px;
+          mat-checkbox{
+            margin: 0 8px 0 8px;
+          }
+        }
+
+      }
+    }
+
+    .clear {
+      padding: 0;
+      align-self: flex-end;
+    }
+  }
+
+  &--justified {
+    .filters {
+      margin-bottom: 8px;
+
+      .field:last-child {
+        padding-right: 0px;
+      }
+
+      .field {
+        flex: 1 $default-flex-shrink $default-flex-basis;
+        padding: 0px 36px 0px 0px;
+      }
+    }
+  }
+}

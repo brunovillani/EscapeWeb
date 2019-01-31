@@ -1,0 +1,31 @@
+@import "../../../../assets/styles/base/_variables";
+
+.inline-menu {
+  flex-direction: column;
+  display: flex;
+
+  button {
+    span {
+      line-height: 16px;
+
+      &.white-space-normal {
+        white-space: normal;
+        text-align: left;
+      }
+    }
+  }
+
+  .mat-button--square {
+    border-bottom: 1px solid $light-grey-color;
+  }
+
+  &--condensed {
+    .mat-button--square {
+      border-bottom: none;
+    }
+  }
+
+  .detail {
+    font-size: 11px;
+  }
+}

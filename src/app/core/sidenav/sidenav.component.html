@@ -1,0 +1,17 @@
+<mat-sidenav-container class="sidenav" [ngClass]="{ 'no-backdrop': !backdrop }">
+  <mat-sidenav mode="over" [(opened)]="menuAberto" fixedInViewport="true" (close)="onClose()">
+    <a class="sidenav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="" (click)="onClose()"
+      mat-button>
+      <app-icon svgIcon="home" iconColor="white"></app-icon>
+    </a>
+    <a class="sidenav-item" routerLinkActive="active" routerLink="/jogos" (click)="onClose()" mat-button>
+      <app-icon svgIcon="settings" iconColor="white"></app-icon>
+    </a>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <button class="sidenav-item sidenav-toggle" (click)="toggleOpen()" mat-button>
+      <app-icon svgIcon="grid" iconColor="white"></app-icon>
+    </button>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

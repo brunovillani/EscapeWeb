@@ -1,0 +1,7 @@
+<div class="inline-menu" [ngClass]="{ 'inline-menu--condensed': condensed }">
+  <button *ngFor="let option of options; let i = index" [disabled]="option.disabled" [ngClass]="{ 'mat-button--square--primary': i === selectedIndex, 'mat-button--condensed': condensed }" (click)="optionSelected(i)" class="mat-button--square" mat-button>
+    <span [ngClass]="{'white-space-normal': whiteSpaceNormal}">{{ option.title }}</span>
+    <span *ngIf="option.detail !== null" class="flex-end primary-color detail" [ngClass]="{'light-primary-color': i === selectedIndex}">{{ option.detail }}</span>
+    <app-icon *ngIf="!condensed" svgIcon="chevron-right"></app-icon>
+  </button>
+</div>

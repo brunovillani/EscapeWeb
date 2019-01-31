@@ -1,0 +1,8 @@
+<div class="santos-dumont">
+  <div class="lista-logicas" *ngFor="let logica of logicas">
+    <p>{{ logica.id }}</p>
+    <app-icon *ngIf="logica.concluida" svgIcon="edit"></app-icon>
+    <app-icon *ngIf="!logica.concluida" svgIcon="search"></app-icon>
+  </div>
+  <app-player></app-player>
+</div>

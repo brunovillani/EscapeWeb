@@ -1,0 +1,14 @@
+.jogos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 10px 10px 10px;
+
+    .botoes {
+        display: flex;
+        justify-content: space-evenly;
+
+        min-width: 100px;
+    }
+}

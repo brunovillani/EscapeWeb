@@ -1,0 +1,27 @@
+@import '../../../assets/styles/base/_variables';
+
+.page-not-found {
+  .center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .codigo {
+      display: flex;
+      align-items: baseline;
+
+      h6 {
+        font-size: 148px;
+        color: $light-grey-color;
+      }
+    }
+
+    h4 {
+      width: 350px;
+      text-align: center;
+      color: $light-black-color;
+    }
+  }
+}

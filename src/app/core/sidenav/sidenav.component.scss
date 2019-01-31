@@ -1,0 +1,62 @@
+@import './../../../assets/styles/base/_variables';
+@import './../../../assets/styles/base/_mixins';
+
+.sidenav {
+    background-color: #fff;
+    min-height: 100vh;
+    display: block;
+    z-index: 2;
+    
+    .sidenav-item {
+        background-color: $black-color; 
+        height: $sidenav-item-height;
+        justify-content: center;
+        width: $sidenav-width;
+        align-items: center;
+        margin-bottom: 0;
+        border-radius: 0;
+        min-width: 16px;
+        display: flex;
+        
+        &.active {
+            background-color: $secondary-color; 
+        }
+        
+        &.sidenav-toggle {
+            background-color: $light-black-color;
+            border-radius: 0;
+            position: fixed;
+            min-width: 0;
+            z-index: 2;
+            padding: 0;
+            left: 0;
+            top: 0;
+        }
+        
+    }
+
+    .mat-sidenav {
+        background-color: $black-color; 
+        width: $sidenav-width;
+        z-index: 3;
+        overflow-y: visible;
+
+        @include elevation;
+
+        ul {
+            text-align: center;
+            list-style: none;
+            padding: 0;
+        }
+    }
+
+    .mat-sidenav-container {
+        min-height: 100vh;
+        overflow: auto;
+    }
+
+    .itemBottomPage{
+        bottom: 20px;
+        position: fixed;
+    }
+}

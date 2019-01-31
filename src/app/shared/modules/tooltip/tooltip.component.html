@@ -1,0 +1,10 @@
+<ng-container *ngIf="visible">
+  <div class="tooltip tooltip--{{size}}" [ngClass]="{ 'tooltip--fixedWidth': fixedWidth, 'tooltip--no-display': !display }" *ngIf="visible" @fadeInOut #tooltipDiv>
+    <div class="inner">
+      <p class="title title--{{ alignTitle }}" *ngIf="title">{{ title }}</p>
+      <p class="description" *ngIf="!hasHTMLContent">{{ content }}</p>
+      <p class="description" *ngIf="hasHTMLContent"[innerHTML]="content"></p>
+    </div>
+  </div>
+  <div class="tooltip-arrow tooltip-arrow--{{ placement }}" [ngClass]="{'tooltip--no-display': !display }" @fadeInOut #tooltipArrow></div>
+</ng-container>

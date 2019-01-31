@@ -1,0 +1,38 @@
+<div class="filter" [ngClass]="{ 'opened': opened, 'column': column, 'filter--justified': justified }">
+  <div class="filters" *ngIf="opened" @flyInOut>
+    <div class="field" *ngFor="let filterForm of filtersForm.controls; let iF = index" [ngSwitch]="filterForm.value.type">
+
+      <mat-form-field *ngSwitchCase="'input'">
+        <input type="text" [placeholder]="filter.fields[iF].placeholder" [formControl]="filterForm.get('value')" matInput>
+      </mat-form-field>
+
+      <div class="checkbox-filter" *ngSwitchCase="'checkbox'">
+        <label>{{filter.fields[iF].placeholder}}: </label>
+        <mat-checkbox (change)="getValue()" [formControl]="optionForm.get('value')" *ngFor="let optionForm of filterForm.get('value').controls">{{ optionForm.value.text }}</mat-checkbox>
+      </div>
+
+      <mat-form-field *ngSwitchCase="'select'">
+        <mat-select [placeholder]="filter.fields[iF].placeholder" [multiple]="filter.fields[iF].multiple" [formControl]="filterForm.get('value')">
+          <mat-option *ngFor="let option of filter.fields[iF].options" [value]="option.value">{{ option.text }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <ng-container *ngSwitchCase="'period'">
+        <mat-form-field>
+          <input [placeholder]="filter.fields[iF].startDate.placeholder" class="datepicker" [matDatepicker]="pickerStartDate" [formControl]="filterForm.get('startDate.value')"
+            (click)="pickerStartDate.open()" (dateChange)="periodChange(iF, $event.value, true)" [max]="filter.fields[iF].maxDate" readonly matInput>
+          <mat-datepicker startView="year" #pickerStartDate></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <input [placeholder]="filter.fields[iF].endDate.placeholder" class="datepicker" [matDatepicker]="pickerEndDate" [formControl]="filterForm.get('endDate.value')"
+            (click)="pickerEndDate.open()" (dateChange)="periodChange(iF, $event.value, false)" [min]="filter.fields[iF].minDate" readonly matInput>
+          <app-icon svgIcon="calendar" matSuffix></app-icon>
+          <mat-datepicker startView="year" #pickerEndDate></mat-datepicker>
+        </mat-form-field>
+      </ng-container>
+    </div>
+    <div class="clear" *ngIf="useCleanFilter">
+      <a class="link" (click)="clearAll()">Limpar filtros</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="message-dialog" [ngClass]="{ 'message-dialog--centered': data.centered }">
+  <button mat-icon-button type="button" (click)="dialogRef.close()" class="close-button">
+    <app-icon svgIcon="x"></app-icon>
+  </button>
+  <div class="conteudo">
+    <h4>{{ data.title }}</h4>
+    <p>{{ data.subtitle }}</p>
+    <hr *ngIf='!data.centered'>
+    <app-icon class="icon-image" *ngIf="data.icon != ''" [svgIcon]='data.icon' [ngClass]="{'icon--huge': data.iconIsHuge}"></app-icon>
+    <p class="message" *ngFor="let message of data.messageTexts">{{ message }}</p>
+    <img *ngIf="data.img != ''" [src]="data.img">
+  </div>
+  <div class="buttons" *ngIf="data.buttons.length > 0" [ngClass]="{'buttons--centered': data.btnCentered}">
+    <button *ngFor="let button of data.buttons" class="mat-button btn btn--{{ button.type }}" mat-button (click)="button.action()">
+      <span>{{ button.name }}</span>
+      <app-icon *ngIf="button.icon != ''" [svgIcon]="button.icon"></app-icon>
+    </button>
+  </div>
+</div>
