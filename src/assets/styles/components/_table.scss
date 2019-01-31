@@ -1,0 +1,306 @@
+.table {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+
+  .table-container {
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    height: 100%;
+  }
+
+  .header,
+  .header>div,
+  .row,
+  .row>div {
+    display: flex;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .header {
+    font: 500 13px 'Avenir Next';
+    color: $medium-grey-color;
+    height: 40px;
+
+    .mat-select {
+      .mat-select-arrow-wrapper {
+        display: inline-block;
+      }
+    }
+
+    .mat-sort-header-arrow {
+      margin-right: -16px;
+      margin-top: 1px;
+    }
+  }
+
+  .row {
+    border-bottom: $table-border;
+    align-items: stretch;
+    min-height: 48px;
+    font-size: 12px;
+
+    .mat-form-field {
+      .mat-form-field-label {
+        top: 1.38125em;
+        opacity: 0.3;
+      }
+
+      &.mat-form-field-invalid .mat-select-value-text,
+      &.mat-form-field-invalid .mat-input-element {
+        color: $red-color;
+      }
+
+      .mat-input-element:disabled {
+        color: $light-black-color;
+      }
+    }
+
+    b {
+      font-size: 12px;
+    }
+
+    &--empty {
+      margin-bottom: -6px;
+      height: 128px;
+    }
+
+    &--expandable {
+      overflow: hidden;
+      display: block;
+      height: auto;
+      padding: 0;
+
+      @include transition;
+
+      .ng-container .sub-row,
+      .parent-row,
+      .sub-row,  {
+        @extend .row;
+        border: none;
+        width: 100%;
+      }
+
+      .parent-row {
+        position: relative;
+      }
+
+      .column--control {
+        position: relative;
+      }
+    }
+
+    &--no-padding {
+      padding: 0;
+    }
+
+    &--last-child {
+      border-bottom: none;
+    }
+
+    &--disabled {
+      .column {
+        span {
+          color: $grey-color;
+        }
+
+        app-icon {
+          @include icon-color ($grey-color);
+        }
+      }
+    }
+
+    @for $i from 0 through 11 {
+      &--level-#{$i} {
+        .column--control {
+          left: $i*16px;
+        }
+
+        .column--base {
+          span {
+            padding-left: $i*16px;
+          }
+        }
+      }
+    }
+  }
+
+  .column {
+    padding-right: 20px;
+    align-items: center;
+
+    @for $i from 1 through 15 {
+      &.column--flex-#{$i} {
+          flex: $i;
+      }
+    }
+
+    @for $i from 1 through 10 {
+      &.column--width-#{$i * 10} {
+          width: $i * 10%;
+      }
+    }
+
+    &--button-left {
+      min-width: 40px;
+      padding: 0;
+
+      button {
+        margin-left: -13px;
+      }
+    }
+
+    &--button-right {
+      padding: 0;
+
+      button {
+        margin-right: -13px;
+      }
+    }
+
+    &--menu {
+      margin-left: -20px;
+      padding: 0;
+    }
+
+    &--flex-end {
+      align-items: flex-end;
+    }
+
+    &--centered {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    &--right {
+      span {
+        text-align: right;
+        width: 100%;
+      }
+    }
+
+    &--center-right {
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    &--left {
+      * {
+        text-align: left;
+        width: 100%;
+      }
+    }
+
+    &--expand-control {
+      font-family: 'Avenir Next';
+      font-weight: 500;
+
+      span {
+        padding-left: 16px;
+      }
+    }
+
+    &--currency {
+      font-weight: 600;
+      color: $medium-grey-color;
+    }
+
+    &--primary {
+      color: $primary-color;
+    }
+  }
+
+  &--mini {
+    .row {
+      min-height: 24px;
+      height: 24px;
+      border: none;
+      padding: 0;
+    }
+  }
+
+  &--primary {
+    background-color: $primary-color;
+  }
+
+  &--gradient {
+    border-left: $table-border;
+
+    @include gradient-background();
+  }
+
+  &--thinner {
+    height: 40px;
+
+    .row {
+      height: 40px;
+      padding: 0;
+    }
+  }
+
+  &--bordered {
+    border-bottom: $table-border;
+
+    .header {
+      border-top: $table-border;
+      border-bottom: $table-border;
+    }
+
+    .header, .row {
+      border-left: $table-border;
+      border-right: $table-border;
+    }
+  }
+
+  &--borderless {
+    .header,
+    .row {
+      border-bottom: none;
+    }
+  }
+
+  &--spaced {
+    $space-size: 20px;
+
+    margin-bottom: $space-size;
+    .header {
+      padding-left: $space-size;
+      height: 50px;
+    }
+    .row {
+      padding-left: $space-size;
+      height: 60px;
+    }
+  }
+
+  &--hovered {
+    .sub-row:hover,
+    .parent-row:hover {
+      background-color: rgba($black-color, .05);
+    }
+
+    &-on-row {
+      .row {
+        &:hover {
+         background-color: rgba($black-color, .05);
+        }
+      }
+    }
+  }
+}
+.mat-paginator-navigation-next {
+  .mat-paginator-decrement {
+    margin: 0;
+  }
+}
+
+.mat-paginator-navigation-next {
+  .mat-paginator-increment {
+    margin: 0;
+  }
+}

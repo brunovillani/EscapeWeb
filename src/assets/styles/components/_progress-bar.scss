@@ -1,0 +1,17 @@
+.mat-progress-bar {
+  border-radius: 16px;
+
+  .mat-progress-bar-background {
+    fill: $light-grey-color;
+  }
+
+  .mat-progress-bar-fill::after {
+    background-color: $yellow-color;
+  }
+
+  &--warn {
+    .mat-progress-bar-fill::after {
+      background-color: $red-color;
+    }
+  }
+}

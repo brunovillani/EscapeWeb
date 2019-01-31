@@ -1,0 +1,77 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$falconi-primary: (
+    50: #ebf4f9,
+    100: #cde3f1,
+    200: #acd0e8,
+    300: #8bbdde,
+    400: #72afd7,
+    500: #59a1d0,
+    600: #5199cb,
+    700: #488fc4,
+    800: #3e85be,
+    900: #2e74b3,
+    A100: #f6fbff,
+    A200: #c3e2ff,
+    A400: #90c9ff,
+    A700: #77bcff,
+    contrast: (
+        50: #000000,
+        100: #000000,
+        200: #000000,
+        300: #000000,
+        400: #000000,
+        500: #000000,
+        600: #000000,
+        700: #ffffff,
+        800: #ffffff,
+        900: #ffffff,
+        A100: #000000,
+        A200: #000000,
+        A400: #000000,
+        A700: #000000,
+    )
+);
+
+$falconi-accent: (
+    50: #e7e7e7,
+    100: #c2c2c2,
+    200: #999999,
+    300: #707070,
+    400: #525252,
+    500: #333333,
+    600: #2e2e2e,
+    700: #272727,
+    800: #202020,
+    900: #141414,
+    A100: #333333,
+    A200: #ea4040,
+    A400: #f60000,
+    A700: #dd0000,
+    contrast: (
+        50: #000000,
+        100: #000000,
+        200: #000000,
+        300: #ffffff,
+        400: #ffffff,
+        500: #ffffff,
+        600: #ffffff,
+        700: #ffffff,
+        800: #ffffff,
+        900: #ffffff,
+        A100: #ffffff,
+        A200: #ffffff,
+        A400: #ffffff,
+        A700: #ffffff,
+    )
+);
+
+$falconi-primary-palette: mat-palette($falconi-primary);
+$falconi-accent-palette: mat-palette($falconi-accent);
+
+$falconi-app-theme: mat-light-theme($falconi-primary-palette, $falconi-primary-palette);
+@include angular-material-theme($falconi-app-theme);
+
+$falconi-typography-config: mat-typography-config('"Avenir", "Helvetica Neue", sans-serif');
+@include angular-material-typography($falconi-typography-config);

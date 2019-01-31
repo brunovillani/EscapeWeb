@@ -1,0 +1,211 @@
+.logo-falconi {
+    @include icon(110px);
+}
+
+.icon {
+    @include icon(16px, 16px);
+
+    &--plus {
+        height: 12px;
+        width: 12px;
+        margin: 2px;
+    }
+
+    &--x {
+        height: 12px;
+        width: 12px;
+        margin: 2px;
+    }
+
+    &--white {
+        @include icon-color(#FFF);
+    }
+
+    &--black {
+        @include icon-color(black);
+    }
+
+    &--grey {
+        @include icon-color($grey-color);
+    }
+
+    &--red {
+        @include icon-color($red-color);
+    }
+
+    &--green {
+        @include icon-color($green-color);
+    }
+
+    &--yellow {
+        @include icon-color($yellow-color);
+    }
+
+    &--primary {
+        @include icon-color($primary-color);
+    }
+
+    &--gold {
+        @include icon-color($gold-color);
+    }
+
+    &--secondary {
+        @include icon-color($secondary-color);
+    }
+
+    &--clear-field {
+      background-color: $light-grey-color;
+      @include icon(10px, 10px);
+      border-radius: 50%;
+      cursor: pointer;
+      padding: 2px;
+    }
+
+    &--smallest {
+        @include icon(8px, 8px);
+    }
+
+    &--smaller {
+        @include icon(10px, 10px);
+    }
+
+    &--small {
+        @include icon(12px, 12px);
+    }
+
+    &--medium {
+        @include icon(20px, 20px);
+
+        &.icon--money-exchange {
+          width: 34px;
+        }
+        &.icon--person-contract {
+          width: 24px;
+        }
+        &.icon--person-money {
+          width: 30px;
+        }
+    }
+
+    &--big {
+        @include icon(24px, 24px);
+    }
+
+    &--bigger {
+        @include icon(32px, 32px);
+    }
+
+    &--huge {
+        @include icon(40px, 40px);
+
+        &.icon--employee {
+          height: 58px;
+          width: 67px;
+        }
+
+        &.icon--analytics {
+          @include icon(64px, 64px);
+        }
+
+        &.icon--graphic {
+          height: 60px;
+          width: 84px;
+        }
+    }
+
+    &--huger {
+      @include icon(46px, 46px);
+
+      &.icon--price {
+        width: 24px
+      }
+    }
+
+    &--list {
+        @include icon(16px, 16px);
+    }
+
+    &--tower {
+        @include icon(32px, 69px);
+    }
+
+    &--torre-1 {
+        @include icon(24px, 48px);
+    }
+
+    &--torre-2 {
+        @include icon(24px, 36px);
+    }
+
+    &--torre-3 {
+        @include icon(24px, 24px);
+    }
+
+    &--tower-base {
+        @include icon(100px, 49px);
+    }
+
+    &--logo {
+      @include icon(256px, 64px);
+    }
+
+    &:not(.icon--plus-circle )[class *= "-circle"] {
+        background-color: #fff;
+        border-radius: 50%;
+    }
+
+    &--border-color {
+        &-default {
+            @include icon-border-color(black);
+        }
+
+        &-white {
+            @include icon-border-color(#FFF);
+        }
+
+        &-black {
+            @include icon-border-color(black);
+        }
+
+        &-grey {
+            @include icon-border-color($grey-color);
+        }
+
+        &-red {
+            @include icon-border-color($red-color);
+        }
+
+        &-green {
+            @include icon-border-color($green-color);
+        }
+
+        &-yellow {
+            @include icon-border-color($yellow-color);
+        }
+
+        &-primary {
+            @include icon-border-color($primary-color);
+        }
+
+        &-gold {
+            @include icon-border-color(gold);
+        }
+
+        &-secondary {
+            @include icon-border-color($secondary-color);
+        }
+    }
+}
+
+.icon-border {
+    border: 1px solid $black-color;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 7px;
+    height: 32px;
+    width: 32px;
+
+    &--primary {
+        border-color: $primary-color;
+    }
+}

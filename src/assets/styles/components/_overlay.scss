@@ -1,0 +1,12 @@
+.overlay {
+    position: absolute;
+    height: 30px;
+    right: 8px;
+    z-index: 1;
+    left: 0;
+    
+    &--bottom {
+        box-shadow: inset 0px -30px 15px -10px white;
+        bottom: 0;
+    }
+}

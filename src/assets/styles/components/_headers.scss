@@ -1,0 +1,74 @@
+@import "../base/mixins";
+
+.flex-header {
+    justify-content: space-between;
+    margin-bottom: 32px;
+    display: flex;
+
+    h1,
+    p {
+        margin-bottom: 0px;
+    }
+
+    h2 {
+        margin-bottom: 8px;
+    }
+
+    &--no-margin {
+      margin-bottom: 0px;
+    }
+
+    .titulo {
+      align-items: center;
+      margin-left: -24px;
+      display: flex;
+
+      app-icon[appTooltip] {
+        margin-bottom: 8px;
+        margin-right: 8px;
+      }
+    }
+}
+
+.black-header {
+  background-color: $light-black-color;
+  position: relative;
+  height: 256px;
+  color: #fff;
+  width: 100%;
+
+  @include elevation;
+  @include container-padding;
+  padding-left: $app-padding + $sidenav-width;
+  padding-bottom: 0;
+
+  .cover-image {
+      background-color: #fff;
+      border-radius: 50%;
+      position: absolute;
+      overflow: hidden;
+      bottom: -80px;
+      height: 160px;
+      margin: auto;
+      padding: 8px;
+      width: 160px;
+      right: 0;
+      left: 0;
+
+      @include elevation;
+  }
+
+  .footer-message {
+    position: absolute;
+    bottom: 32px;
+    margin: 0;
+  }
+
+  &--high {
+      height: 287px;
+  }
+
+  &--immovable-side-nav {
+    padding-left: 64px;
+  }
+}

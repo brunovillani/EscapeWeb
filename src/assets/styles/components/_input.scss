@@ -1,0 +1,318 @@
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+.grey-underline {
+  mat-form-field.mat-form-field {
+    .mat-input-underline {
+      background-color: $light-grey-color;
+    }
+  }
+
+  mat-form-field.mat-form-field-disabled {
+    .mat-input-underline {
+      background-color: $light-grey-color;
+    }
+  }
+}
+
+.no-underline {
+  mat-form-field.mat-form-field {
+    .mat-form-field-label {
+      opacity: 0.3;
+    }
+
+    .mat-input-underline {
+      background-color: transparent;
+    }
+
+    .mat-form-field-wrapper {
+        margin-bottom:  -1.25em;
+    }
+
+    .mat-form-field-infix {
+      border: none;
+    }
+
+    textarea.mat-input-element {
+      overflow: hidden;
+    }
+
+    &.mat-form-field-disabled .mat-form-field-underline {
+      display: none;
+    }
+  }
+}
+
+.input-center{
+  .mat-form-field-wrapper{
+    padding: 0;
+  }
+  .mat-form-field-infix{
+    border: none;
+  }
+}
+
+.mat-form-field {
+    .mat-select-value-text,
+    .mat-input-element {
+        &:disabled {
+            color: $medium-grey-color;
+        }
+    }
+
+    .mat-form-field-infix {
+      width: 100%;
+    }
+
+    .mat-form-field-underline {
+        background-color: $light-grey-color;
+    }
+
+    .mat-form-field-label {
+        color: $light-black-color;
+    }
+
+    button {
+        position: absolute;
+        right: -8px;
+        top: -10px;
+    }
+
+    app-icon {
+        @include icon-color($light-black-color);
+
+        &[matsuffix] {
+            margin-bottom: 4px;
+        }
+    }
+
+    p[matsuffix] {
+        margin-bottom: 4px;
+    }
+
+    p[matprefix] {
+        margin-right: 4px !important;
+    }
+
+    .mat-input-prefix {
+        app-icon {
+            margin: -5px 8px 0 0;
+        }
+    }
+
+    .mat-input-suffix {
+      &--small {
+        font-size: 10px;
+      }
+    }
+
+    mat-hint {
+      color: $medium-grey-color;
+      font-size: 10px;
+      margin-top: 2px;
+    }
+
+    &.mat-focused {
+        .mat-form-field-label {
+            color: $secondary-color;
+        }
+    }
+
+    &.mat-form-field--white {
+        color: #fff;
+        caret-color: #fff;
+
+        label.mat-form-field-label {
+            color: #fff;
+        }
+
+        .mat-form-field-ripple {
+            background-color: #fff;
+        }
+
+        app-icon {
+            @include icon-color(#fff);
+        }
+    }
+
+    &.mat-form-field--centered {
+      text-align: center;
+
+      .mat-form-field-label {
+        text-align: center;
+      }
+    }
+
+    &.mat-form-field--primary {
+        caret-color: $primary-color;
+        color: $primary-color;
+    }
+
+    &.mat-form-field-invalid {
+        color: $red-color;
+
+        label.mat-form-field-label {
+            color: $red-color;
+        }
+
+        .mat-form-field-ripple {
+            background-color: $red-color;
+        }
+
+        app-icon {
+            @include icon-color($red-color)
+        }
+    }
+
+    &.percentage {
+        width: 32px;
+    }
+
+    &--selectable-input {
+      .mat-select {
+        position: absolute;
+        bottom: 12px;
+        height: 0;
+        right: 0;
+        left: 0;
+
+        .mat-select-trigger {
+          height: 0;
+        }
+
+        .mat-select-arrow-wrapper {
+          padding: 8px 0;
+        }
+
+        .mat-select-value {
+          visibility: hidden;
+        }
+      }
+    }
+
+    &--normally-disabled {
+      &.mat-form-field-disabled {
+        .mat-select-value-text,
+        .mat-input-element {
+          &:disabled {
+            color: $light-black-color;
+          }
+        }
+
+        .mat-form-field-underline {
+          background-color: $light-grey-color;
+          background-image: none;
+        }
+      }
+    }
+
+  &--bottom {
+    margin-bottom: -1.25em;
+  }
+}
+
+.form-group {
+    border: 1px solid $grey-color;
+    align-items: center;
+    border-radius: 2px;
+    padding: 4px 8px;
+    display: flex;
+    resize: none;
+
+    input {
+        border: none;
+        margin: 0;
+
+        &--center {
+            text-align: center;
+        }
+    }
+
+    .mat-icon-button {
+      margin: -13px;
+      margin-left: 0;
+    }
+
+    &--small {
+        height: 24px;
+        width: 280px;
+        padding: unset;
+    }
+
+    .separator {
+        text-align: center;
+        width: 16px;
+    }
+
+    &--white {
+        input {
+            background-color: transparent;
+            caret-color: #fff;
+            color: #fff;
+
+            &.datepicker {
+                text-align: center;
+                width: 80px;
+            }
+
+            &::-webkit-input-placeholder,
+            &::-moz-placeholder {
+                color: rgba(#fff, .5);
+            }
+        }
+    }
+
+    &--secondary {
+      color: $secondary-color;
+    }
+
+    &--centered {
+      text-align: center;
+    }
+}
+
+.form-spacing {
+    .mat-form-field {
+        margin-bottom: 24px;
+    }
+}
+
+.mat-input-element.not-disabled:disabled {
+    color: $light-black-color;
+
+    &.descricao {
+        color: $medium-grey-color;
+    }
+}
+
+input {
+    letter-spacing: 0.3px;
+
+    &.text-center {
+        text-align: center;
+    }
+
+    &.text-right {
+        text-align: right;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:active,
+    &:-webkit-autofill:focus {
+        background-color: transparent;
+        -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+        -webkit-text-fill-color: inherit !important;
+    }
+
+    &[type=file] {
+        display: none;
+    }
+}

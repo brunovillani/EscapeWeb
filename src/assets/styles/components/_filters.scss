@@ -1,0 +1,35 @@
+.filter-toggle {
+    &:after {
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 4px solid $black-color;
+        position: absolute;
+        display: block;
+        content: ""; 
+        top: 22px;
+        width: 0;
+        right: 0;
+
+        transform: rotate(-90deg);
+        opacity: 0;
+
+        @include transition;
+    }
+
+    &.opened {
+        &:after {
+            transform: rotate(0);
+            opacity: 1;
+        }
+    }
+    
+    &--filtering {
+        app-icon {
+            @include icon-color($secondary-color);
+        }
+
+        &:after {
+            border-top-color: $secondary-color;
+        }
+    }
+}

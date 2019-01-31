@@ -1,0 +1,61 @@
+.flex-center {
+    justify-content: center !important;
+    align-items: center !important;
+    display: flex;
+}
+
+.flex-space-between {
+  justify-content: space-between;
+  display: flex;
+}
+
+.flex-align-center {
+    align-items: center;
+    display: flex;
+}
+
+.flex-end {
+    justify-content: flex-end;
+    display: flex;
+}
+
+.flex-start {
+  justify-content: flex-start;
+  display: flex;
+}
+
+.flex-two-columns {
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    display: flex;
+
+    & > * {
+        width: calc(50% - 10px) !important;
+
+        &:nth-child(odd) {
+            margin-right: 8px;
+        }
+
+        &:nth-child(even) {
+            margin-left: 8px;
+        }
+    }
+}
+
+.flex-three-columns {
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+    display: flex;
+
+    & > * {
+        width: 30%;
+    }
+}
+
+@for $i from 0 through 15 {
+  .flex-#{$i} {
+    flex: $i;
+  }
+}

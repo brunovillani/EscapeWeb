@@ -1,0 +1,135 @@
+.mat-accordion {
+    .mat-expansion-panel {
+        position: relative;
+        margin-bottom: 8px;
+        margin-top: 8px;
+
+        .mat-expansion-panel-header {
+            color: $light-black-color;
+            padding: 0;
+
+            .mat-content {
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 24px;
+
+                .header-info {
+                    max-width: 85%;
+                    flex: 1;
+
+                    h4 {
+                        margin-bottom: 2px;
+                    }
+
+                    h4,
+                    p {
+                        @include truncate;
+                    }
+                }
+
+                .mat-icon-button {
+                    margin: 0 -13px;
+                }
+            }
+
+            &--centered {
+                .mat-content {
+                    h4 {
+                        margin: 0;
+                    }
+
+                    app-icon {
+                        margin-right: 16px;
+                    }
+
+                    @extend .flex-center;
+                }
+            }
+
+            .number {
+              font: 500 13px 'Avenir Next';
+              flex-direction: column;
+              padding-left: 20px;
+              text-align: right;
+              display: flex;
+
+              &--centered {
+                text-align: center;
+              }
+
+              .title {
+                margin-bottom: 4px;
+                color: $grey-color;
+              }
+
+              .value {
+                font-size: 14px;
+              }
+            }
+        }
+
+        .mat-expansion-panel-body {
+            padding: 0 24px 24px;
+        }
+
+        &--disabled {
+            box-shadow: none !important;
+
+            @include transition;
+
+            .mat-content {
+                opacity: 0.5;
+            }
+
+            &:hover {
+                .mat-content {
+                    opacity: 1;
+                }
+            }
+        }
+
+        &--no-box-shadow {
+            box-shadow: none !important;
+
+            @include transition;
+
+            .mat-expansion-panel-header {
+                &:not([aria-disabled='true']):hover {
+                    background-color: transparent;
+                }
+            }
+
+        }
+
+        &.tab-fix {
+          &:not(.mat-expansion-panel--expanded) {
+            .mat-expansion-panel-body {
+              padding: 0;
+            }
+          }
+        }
+    }
+
+    .show-expanded {
+        display: none;
+    }
+
+    .hide-expanded {
+        display: block;
+    }
+
+    .mat-expanded {
+        .show-expanded {
+            display: block;
+        }
+
+        .hide-expanded {
+            display: none;
+        }
+    }
+
+    hr {
+        margin-bottom: 32px;
+        margin-top: 0;
+    }
+}

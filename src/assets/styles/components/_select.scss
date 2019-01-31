@@ -1,0 +1,177 @@
+.mat-select {
+  .mat-select-arrow {
+    color: rgba($black-color, .5);
+    border-right-width: 4px;
+    border-left-width: 4px;
+    border-top-width: 4px;
+    margin-left: 8px;
+  }
+
+  .mat-select-trigger {
+    align-items: center;
+    display: flex;
+
+    .mat-select-value {
+      display: inline-block;
+      max-width: 100%;
+    }
+  }
+
+  &.mat-select-disabled {
+    .mat-select-arrow {
+      display: none;
+    }
+  }
+
+  &--arrow-only {
+    .mat-select-trigger {
+      .mat-select-value,
+      .mat-input-underline {
+        display: none;
+      }
+    }
+
+    .mat-select-value,
+    .mat-input-underline {
+      display: none;
+    }
+
+    .mat-form-field-infix {
+      width: 0;
+    }
+  }
+
+  &--custom-arrow {
+    .mat-select-arrow {
+      display: none;
+    }
+  }
+
+  &--max-width {
+    &-small {
+      .mat-select-value {
+        max-width: 64px;
+      }
+    }
+
+    &-large {
+      .mat-select-value {
+        max-width: 112px;
+      }
+    }
+  }
+
+  &--14 {
+    .mat-select-value-text {
+      font-size: 14px;
+    }
+  }
+
+  &--card {
+    .mat-select-trigger {
+      border: 1px solid $dark-grey-color;
+      color:  $dark-grey-color;
+      border-radius: 3px;
+      padding: 12px 8px;
+      font-weight: 500;
+    }
+
+    .mat-select-arrow {
+      color:  $dark-grey-color;
+    }
+  }
+
+  &--secondary {
+    .mat-select-value-text {
+      color: $secondary-color;
+      font-size: 18px;
+    }
+  }
+
+  &--centered {
+    text-align: center;
+  }
+}
+
+.mat-select-panel .mat-option,
+.mat-option {
+  font: 500 12px "Avenir" !important;
+  white-space: normal !important;
+  overflow: unset !important;
+  height: auto !important;
+  padding: 8px 16px !important;
+
+  &--multiline {
+    display: block;
+
+    .title {
+      line-height: 16px;
+      padding-top: 4px;
+      display: block;
+      width: 100%;
+    }
+
+    .description {
+      color: $medium-grey-color;
+      line-height: 16px;
+      font-size: 10px;
+      display: block;
+      width: 100%;
+    }
+  }
+}
+
+.mat-optgroup {
+  .mat-optgroup-label {
+    color: $primary-color;
+  }
+}
+
+.mat-autocomplete-panel {
+  min-width: 160px !important;
+}
+
+.no-underline {
+  .mat-select, &.mat-form-field {
+    .mat-input-underline {
+      display: none !important;
+    }
+  }
+}
+
+.select-list {
+  flex-direction: column;
+  display: flex;
+
+  p {
+    margin-bottom: 32px;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  &-info {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+
+    h6, h4 {
+      margin-bottom: 8px;
+    }
+
+    app-icon {
+      margin-bottom: 24px;
+    }
+  }
+
+  &-options {
+    flex-direction: column;
+    margin: 0 auto;
+    display: flex;
+    width: 55%;
+
+    mat-radio-button {
+      margin-bottom: 16px;
+    }
+  }
+}

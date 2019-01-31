@@ -1,0 +1,54 @@
+.mat-checkbox {
+  margin-top: -1px;
+
+    .mat-checkbox-inner-container {
+        width: 16px;
+        height: 16px;
+    }
+
+    .mat-checkbox-frame {
+        border-color: $grey-color;
+        border-width: 1px;
+    }
+
+    .mat-checkbox-background {
+        bottom: 2px;
+        right: 2px;
+        left: 2px;
+        top: 2px;
+    }
+
+    .mat-checkbox-label {
+        line-height: 16px;
+    }
+
+    .mat-checkbox-ripple {
+        left: -17px;
+        top: -17px;
+    }
+
+    svg.mat-checkbox-checkmark {
+        display: none;
+    }
+}
+
+.mat-checkbox-group {
+    position: relative;
+    flex-wrap: wrap;
+    display: flex;
+
+    .group-name {
+        margin-bottom: 8px;
+        width: 100%;
+    }
+
+    .mat-checkbox {
+        flex: 1;
+    }
+
+    a.link {
+        position: absolute;
+        bottom: -8px;
+        right: 0;
+    }
+}

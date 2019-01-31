@@ -1,0 +1,358 @@
+.mat-button.btn {
+    border: 1px solid $primary-color;
+    touch-action: manipulation;
+    vertical-align: middle;
+    color: $primary-color;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 28px;
+    white-space: nowrap;
+    line-height: 26px;
+    text-align: center;
+    user-select: none;
+    margin-bottom: 0;
+    min-width: 16px;
+    padding: 0 24px;
+    cursor: pointer;
+    font-size: 14px;
+    height: 28px;
+
+    .mat-button-ripple {
+        border-radius: 25px;
+    }
+
+    .mat-button-focus-overlay {
+        background-color: rgba(0, 0, 0, 0.05);
+        border-radius: 25px;
+    }
+
+    .left {
+        position: absolute;
+        left: 20px;
+        top: 5px;
+    }
+
+    .right {
+        position: absolute;
+        right: 20px;
+        top: 5px;
+    }
+
+    app-icon {
+        @include icon-color($primary-color);
+        margin-right: 8px;
+    }
+
+    &--grey {
+        border-color: $grey-color;
+        color: $grey-color;
+
+        app-icon {
+            @include icon-color($grey-color);
+        }
+    }
+
+    &--black {
+      border-color: $black-color;
+      background-color: #fff;
+      color: $black-color;
+
+      app-icon {
+          @include icon-color($black-color);
+      }
+    }
+
+    &--white {
+        background-color: $light-black-color;
+        border-color: #fff;
+        color: #fff;
+
+        app-icon {
+            @include icon-color(#fff);
+        }
+
+        &[disabled] {
+          border-color: rgba(255, 255, 255, .3);
+          color: rgba(255, 255, 255, .3) !important;
+        }
+    }
+
+    &--primary {
+      background-color: $primary-color;
+      border-color: $primary-color;
+      color: #fff;
+
+      app-icon {
+          @include icon-color(#fff);
+      }
+    }
+
+    &--secondary {
+        border-color: $black-color;
+        color: $black-color;
+    }
+
+    &--yellow {
+      border-color: $yellow-color;
+      color: $yellow-color;
+
+      app-icon {
+        @include icon-color(#fff);
+      }
+
+      &.fill {
+        background-color: $yellow-color;
+        color: #fff;
+      }
+    }
+
+    &--primary[disabled],
+    &--primary.btn--disabled {
+        background-color: $grey-color;
+        color: #fff;
+
+        app-icon {
+            @include icon-color(#fff);
+        }
+    }
+
+    .alert-icon {
+        position: absolute;
+        left: 8px;
+        top: 5px;
+    }
+
+    &--stacked {
+        .mat-button-wrapper {
+            flex-flow: column;
+        }
+    }
+
+    &--chip {
+      line-height: 12px;
+      padding: 0 12px;
+      font-size: 11px;
+      height: 20px;
+    }
+}
+
+a.mat-button {
+  &[disabled]:not(.mat-button--link) {
+    color: inherit !important;
+  }
+
+  &--vertical {
+    padding: 12px;
+
+    .mat-button-wrapper {
+      flex-direction: column;
+      align-items: center;
+      display: flex;
+
+      app-icon {
+        margin-bottom: 8px;
+      }
+
+      span {
+        line-height: 14px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  &--round {
+    .mat-button-ripple {
+      border-radius: 50%;
+    }
+  }
+
+  &--link {
+    .mat-button-wrapper {
+      span {
+        text-decoration: underline;
+      }
+    }
+
+    &--left {
+      margin-left: -8px;
+      padding: 0 8px;
+    }
+  }
+}
+
+.btn-inline {
+    color: $light-black-color;
+    opacity: 0.5;
+
+    @include transition;
+    @extend .h4;
+
+    app-icon {
+        margin-right: 8px;
+    }
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.mat-icon-button[disabled][disabled] {
+    app-icon {
+        @include icon-color($grey-color);
+    }
+}
+
+.btn--expandir {
+    background-color: #fff;
+    border-radius: 20px;
+    @include elevation;
+
+    app-icon {
+        vertical-align: top;
+        transition: 600ms;
+    }
+}
+
+[class$='--expandida'] .btn--expandir {
+    app-icon {
+        transform: rotate(180deg);
+    }
+}
+
+.mat-mini-fab {
+    .mat-button-wrapper {
+        padding: 0 !important;
+        line-height: 40px;
+    }
+
+    &--primary {
+        background-color: $primary-color !important;
+        @include icon-color(#fff);
+    }
+}
+
+a[mat-button],
+button[mat-button],
+button[mat-icon-button] {
+  &:not(.card-link) {
+    .mat-button-wrapper {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+  }
+
+  .mat-button-focus-overlay {
+      background-color: rgba(0, 0, 0, 0.05);
+  }
+
+    &.mat-button--dashed {
+        border: 1px dashed $light-grey-color;
+        padding: 8px;
+
+        .mat-button-wrapper {
+          justify-content: center;
+            flex-direction: column;
+            display: flex;
+            height: 100%;
+            opacity: .5;
+
+            @include transition;
+
+            p,
+            h4 {
+                margin: 0;
+            }
+        }
+
+        &:hover {
+            .mat-button-wrapper {
+                opacity: 1;
+            }
+        }
+    }
+
+    &.mat-button--icon-right {
+      app-icon {
+          margin-left: 8px;
+          margin-right: 0;
+      }
+    }
+
+    &.mat-button--icon-left {
+      padding-left: 12px;
+
+      app-icon {
+          margin-right: 8px;
+          margin-left: 0;
+      }
+    }
+
+    &.mat-button--more {
+      margin: -8px 0 -8px -16px;
+    }
+
+    &.mat-button--condensed {
+      .mat-button-wrapper {
+        span {
+          line-height: 24px;
+          font-size: 14px;
+        }
+      }
+    }
+
+    &.mat-button--square {
+      padding: 12px 24px;
+
+      .mat-button-wrapper {
+        justify-content: space-between;
+        font-size: 15px;
+        display: flex;
+      }
+
+      &[disabled] {
+        color: $light-grey-color;
+
+        app-icon {
+          @include icon-color($light-grey-color);
+        }
+      }
+
+      &--primary {
+        background-color: #59a1d0;
+        border-color: #59a1d0;
+        color: #fff;
+
+        app-icon {
+          @include icon-color(#fff);
+        }
+      }
+    }
+
+    &[disabled],
+    &.mat-button--disabled {
+        border-color: $grey-color;
+        color: $grey-color;
+
+        app-icon {
+            @include icon-color($grey-color);
+        }
+
+        .mat-button-focus-overlay {
+            background-color: transparent;
+        }
+    }
+
+    &.mat-button--line-break {
+      .mat-button-wrapper {
+        white-space: pre-wrap;
+        line-height: 16px;
+        text-align: left;
+        padding: 8px 0;
+      }
+    }
+}
+
+.mat-icon-button--placeholder {
+  width: 40px;
+}

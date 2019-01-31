@@ -1,0 +1,335 @@
+h1,
+.h1 {
+    font-size: 32px;
+}
+
+h2,
+.h2 {
+    font-size: 24px;
+}
+
+h3,
+.h3 {
+    font-size: 20px;
+}
+
+h4,
+.h4 {
+    font-size: 16px !important;
+
+    &--sub-titulo {
+        color: $primary-color;
+    }
+}
+
+h5,
+.h5 {
+    font-size: 14px;
+}
+
+h6,
+.h6 {
+    font-size: 12px;
+}
+
+.h7 {
+    font-size: 10px;
+}
+
+@for $i from 1 through 2 {
+    h#{$i},
+    .h#{$i},
+    .mat-input-element.h#{$i} {
+        font-family: 'Avenir';
+        font-weight: 600;
+    }
+}
+
+@for $i from 3 through 6 {
+    h#{$i},
+    .h#{$i},
+    .mat-input-element.h#{$i} {
+        font-family: 'Avenir Next';
+        font-weight: 600;
+    }
+}
+
+@for $i from 1 through 4 {
+    h#{$i},
+    .h#{$i} {
+        margin: 0 0 16px;
+    }
+}
+
+@for $i from 5 through 6 {
+    h#{$i},
+    .h#{$i} {
+        margin: 0;
+    }
+}
+
+p {
+    margin: 0 0 16px;
+
+    &.ok {
+        color: $green-color;
+        margin: 0;
+    }
+
+    &.atencao {
+        color: $red-color;
+        margin: 0;
+    }
+}
+
+b,
+.bold {
+    font-weight: bold !important;
+
+    &.ok {
+        color: $green-color;
+    }
+
+    &.attention,
+    &.atencao {
+        color: $red-color;
+    }
+}
+
+span.descricao,
+p.descricao,
+input.descricao {
+    color: $medium-grey-color;
+    font-size: 12px;
+    margin: 0;
+}
+
+span {
+    margin: 0;
+}
+
+a {
+    color: $black-color;
+
+    &:not(.link),
+    &:not(.link):active:focus,
+    &:not(.link):active,
+    &:not(.link):focus,
+    &:not(.link):hover {
+        text-decoration: none;
+        outline: none;
+    }
+
+    &.link {
+        text-underline-position: under;
+        vertical-align: middle;
+        display: inline-block;
+        text-decoration: none;
+        color: $primary-color;
+        font-size: 12px;
+        cursor: pointer;
+
+        span {
+            vertical-align: middle;
+        }
+
+        &-underline {
+          text-decoration: underline;
+        }
+    }
+}
+
+.informacoes {
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+    padding: 0 24px;
+    display: flex;
+    margin: 16px;
+
+    .arrow {
+        opacity: .5;
+    }
+
+    .conteudo {
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        padding: 16px 0;
+        display: flex;
+        flex: 1;
+
+        app-icon,
+        h6 {
+            margin-bottom: 16px;
+        }
+
+        h6 {
+            text-transform: uppercase;
+            color: $primary-color;
+            opacity: .5;
+        }
+
+        p {
+            font-size: 12px;
+            margin: 0;
+        }
+    }
+
+    &--dashed {
+        border-left: 2px dashed $light-grey-color;
+
+        &:before,
+        &:after {
+            background-color: $light-grey-color;
+            border-radius: 50%;
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: -10px;
+            top: -8px;
+        }
+
+        &:after {
+            bottom: -8px;
+            top: unset;
+        }
+    }
+}
+
+.primary-color {
+    color: $primary-color;
+}
+
+.secondary-color {
+    color: $secondary-color;
+}
+
+.grey-color {
+    color: $medium-grey-color;
+}
+
+.light-primary-color {
+  color: $light-primary-color;
+}
+
+.text {
+    span {
+        display: block;
+        width: 100%;
+    }
+
+    &--center {
+        text-align: center;
+    }
+
+    &--left {
+        text-align: left;
+    }
+
+    &--right {
+        text-align: right;
+    }
+}
+
+.status-color {
+
+    &--0 {
+        color: $medium-grey-color;
+    }
+
+    &--1 {
+        color: $yellow-color;
+    }
+
+    &--2 {
+        color: $green-color;
+    }
+
+}
+
+.dados {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+
+  .dado {
+    align-items: center;
+    display: flex;
+
+    app-icon {
+      margin-right: 8px;
+    }
+
+    span {
+       display: block;
+
+       &:first-child {
+         font-weight: bold;
+       }
+
+       &:last-child {
+         font-size: 10px;
+       }
+    }
+
+    &--primary {
+      app-icon {
+        @include icon-color($primary-color);
+      }
+
+      span {
+        &:first-child {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
+
+.tooltip {
+  .list-item {
+    display: block;
+    margin-bottom: 4px;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+}
+
+.legend {
+  align-items: baseline;
+  display: flex;
+
+  .label:first-child {
+      margin-right: 8px;
+      font-size: inherit;
+  }
+
+  .label {
+    margin: 0 16px 0 0;
+    font-size: 12px;
+
+    .preview {
+      display: inline-block;
+      border-radius: 50%;
+      margin-right: 8px;
+      height: 10px;
+      width: 10px;
+
+      &.black {
+        background-color: rgba(51, 51, 51, 1);
+      }
+
+      &.opaque-black {
+        background-color: rgba(51, 51, 51, .6);
+      }
+
+      &.dashed-black {
+        background: repeating-linear-gradient(45deg, rgba(51, 51, 51, 1), rgba(51, 51, 51, 0.5) 2px, rgba(51, 51, 51, 0.5) 3px, rgba(51, 51, 51, 0.5) 3px);
+      }
+    }
+  }
+}

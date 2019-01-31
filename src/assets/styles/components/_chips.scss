@@ -1,0 +1,212 @@
+.mat-chip-list {
+  overflow-y: auto;
+  display: block;
+  height: 100%;
+
+  .mat-chip-list-wrapper {
+    padding-right: 8px;
+    width: 100%;
+  }
+
+  &--two-columns {
+    .mat-chip-list-wrapper {
+      justify-content: center;
+      margin-right: -4px;
+      padding: 0;
+
+      @extend .flex-two-columns;
+    }
+  }
+
+  &--stretched {
+    height: 100%;
+    width: 100%;
+
+    .mat-chip-list-wrapper {
+      align-items: center;
+      padding: 14px 16px 11px;
+      overflow-y: auto;
+      height: 100%;
+
+      button {
+        margin: -16px -8px -10px;
+      }
+    }
+  }
+
+  &--centered {
+    .mat-chip-list-wrapper {
+      justify-content: center;
+      display: flex;
+    }
+  }
+
+  &--not-scrollable {
+    .mat-chip-list-wrapper {
+      overflow: hidden;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.mat-primary.mat-chip {
+  margin: 0px 4px 4px 0px !important;
+  border: 1px solid $primary-color;
+  border-radius: 50px !important;
+  outline: 0px solid transparent;
+  padding: 2px 8px !important;
+  font-family: 'Avenir';
+  background-color: #FFFF;
+  text-transform: uppercase;
+  color: $primary-color;
+  text-align: center;
+  user-select: none;
+  line-height: 10px;
+  max-width: 100%;
+  cursor: pointer;
+  font-size: 10px;
+
+  &--min-width {
+    min-width: 80px;
+  }
+
+  p {
+    text-align: center;
+    line-height: 13px;
+    width: 100%;
+    margin: 0;
+
+    @include truncate;
+  }
+
+  .mat-chip-remove {
+    margin-left: 12px;
+    opacity: 1;
+
+    @include icon-color($primary-color);
+  }
+
+  &.mat-chip-selected,
+  &:focus {
+    @include elevation;
+  }
+
+  &--primary {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    color: #fff;
+
+    .mat-chip-remove {
+      @include icon-color(#fff);
+    }
+  }
+
+  &--grey {
+    border-color: $grey-color;
+    color: $grey-color;
+
+    .mat-chip-remove {
+      @include icon-color($grey-color);
+    }
+  }
+
+  &--disabled {
+    background-color: $grey-color;
+    box-shadow: none !important;
+    border-color: $grey-color;
+    color: #fff;
+
+    .mat-chip-remove {
+      @include icon-color(#fff);
+    }
+  }
+
+  &--secondary {
+    background-color: $secondary-color;
+    color: #fff;
+
+    .mat-chip-remove {
+      @include icon-color(#fff);
+    }
+  }
+
+  &--black {
+    border-color: $black-color;
+    color: $black-color;
+
+    .mat-chip-remove {
+      @include icon-color($black-color);
+    }
+  }
+
+  &--green {
+    border-color: $green-color;
+    color: $green-color;
+
+    .mat-chip-remove {
+      @include icon-color($green-color);
+    }
+
+    &.filled {
+      background-color: $green-color;
+      color: #fff;
+
+      .mat-chip-remove {
+        @include icon-color(#fff);
+      }
+    }
+  }
+
+  &--yellow {
+    border-color: $yellow-color;
+    color: $yellow-color;
+
+    .mat-chip-remove {
+      @include icon-color($medium-grey-color);
+    }
+
+    &.filled {
+      background-color: $yellow-color;
+      color: #fff;
+
+      .mat-chip-remove {
+        @include icon-color(#fff);
+      }
+    }
+  }
+
+  &--blue {
+    border-color: $secondary-color;
+    color: $secondary-color;
+
+    .mat-chip-remove {
+      @include icon-color($medium-grey-color);
+    }
+
+    &.filled {
+      background-color: $secondary-color;
+      color: #fff;
+
+      .mat-chip-remove {
+        @include icon-color(#fff);
+      }
+    }
+  }
+
+  &--not-removable {
+    box-shadow: none !important;
+
+    .mat-chip-remove {
+      display: none;
+    }
+  }
+}
+
+.mat-form-field {
+  .mat-chip-list {
+    overflow: unset;
+  }
+}

@@ -1,0 +1,20 @@
+.mat-datepicker-content {
+    .mat-calendar {
+        .mat-calendar-table-header,
+        .mat-calendar-body-label {
+            color: $light-black-color;
+        }
+
+        .mat-calendar-body-selected {
+            color: #fff;
+        }
+        
+        &.mat-calendar--no-controls {
+            height: auto;
+            
+            .mat-calendar-controls {
+                display: none;
+            }
+        }
+    }
+}

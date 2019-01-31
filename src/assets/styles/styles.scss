@@ -1,0 +1,73 @@
+@import 'base/_base';
+@import 'components/_components';
+@import 'typography/_typography';
+
+html,
+body {
+    color: $light-black-color;
+    font-family: 'Avenir';
+    letter-spacing: 0.3px;
+    font-size: 14px;
+    margin: 0;
+}
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+* {
+    @include scrollbar;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid $light-grey-color;
+    margin: 24px 0;
+}
+
+.clearfix:before,
+.clearfix:after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.container {
+    padding: 40px $app-padding 40px $app-padding + $sidenav-width;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+
+    &--full-page {
+        padding-left: $app-padding;
+        min-height: 100%;
+    }
+}
+
+.inner-container {
+  padding: 40px $app-padding;
+}
+
+ul {
+    padding-left: 24px;
+    margin: 0;
+
+    li {
+        margin-bottom: 8px;
+    }
+}
+
+.hide {
+    display: none !important;
+}
+
+.absolute-stretch {
+    position: absolute !important;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+}

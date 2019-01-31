@@ -1,0 +1,45 @@
+.chevron {
+    position: relative;
+    cursor: pointer;
+
+    &:before {
+        border-top: 4px solid rgba($black-color, .5);
+        border-right: 4px solid transparent;
+        border-left: 4px solid transparent;
+        transform: rotate(-90deg);
+        top: calc(50% - 2px);
+        position: absolute;
+        content: "";
+        left: 0;
+
+        @include transition;
+    }
+
+    &--right:before {
+        transform: rotate(90deg);
+        left: unset;
+        right: 0;
+    }
+
+    &--only-bottom:before {
+        opacity: 0;
+    }
+
+    &--black:before {
+        border-top-color: $black-color;
+    }
+
+    &.rotate:before {
+        transform: rotate(0);
+        opacity: 1;
+    }
+}
+
+
+.chevron-hide {
+    @include transition;
+
+    @at-root .hidden-with-chevron #{&} {
+        transform: rotate(180deg);
+    }
+}

@@ -1,0 +1,106 @@
+@mixin scrollbar($size: 5px) {
+    ::-webkit-scrollbar {
+        width: $size;
+        margin-left: -2px;
+        background: rgba(0, 0, 0, .05);
+    }
+
+    ::-webkit-scrollbar:horizontal {
+        height: $size;
+    }
+
+    ::-webkit-scrollbar-track {
+        border-radius: 2px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 2px;
+        background: rgba(0, 0, 0, .15);
+    }
+
+    ::-webkit-scrollbar-thumb:window-inactive {
+        background: rgba(0, 0, 0, .1);
+    }
+}
+
+@mixin container-padding {
+    padding: $app-padding;
+}
+
+@mixin truncate {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+}
+
+@mixin icon($width: 15px, $height: auto, $margin: 0) {
+    margin: $margin;
+    height: $height;
+    width: $width;
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 0;
+}
+
+@mixin elevation ($x-offset: 0px, $y-offset: 1px, $blur: 4px, $spread: 0px, $color: rgba(0, 0, 0, .28)) {
+    box-shadow: $x-offset $y-offset $blur $spread $color;
+}
+
+@mixin icon-color($fill-color: #333) {
+    svg path,
+    svg g {
+        fill: $fill-color;
+    }
+}
+
+@mixin icon-border-color($fill-color: #333) {
+    svg #BorderLine {
+        fill: $fill-color;
+    }
+}
+
+@mixin icon-color-specific($fill-color: #333, $id: 1) {
+  svg g[id="$id"], svg path[id="$id"] {
+    fill: $fill-color;
+  }
+}
+
+@mixin container-padding {
+    padding: 64px;
+}
+
+@mixin transition ($property: all, $duration: .6s) {
+    transition-property: $property;
+    transition-duration: $duration;
+    transition-timing-function: cubic-bezier(.25,.8,.25,1);
+}
+
+@mixin grabbable {
+    cursor: move;
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+    cursor: grab;
+}
+
+@mixin grabbing {
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
+    cursor: grabbing;
+}
+
+@mixin column-font($opacity: 0.7, $font-color: $black-color, $font-weight: 500) {
+  opacity: $opacity;
+  color: $black-color;
+  font-weight: $font-weight;
+}
+
+@mixin gradient-background() {
+  background-image: linear-gradient(90deg, $light-primary-color 0%, #ffffff 100%);
+}
+
+@mixin hovered() {
+  &:hover {
+    background-color: rgba($black-color, .05);
+   }
+}
