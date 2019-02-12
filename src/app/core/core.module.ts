@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module';
-import { HomeComponent } from './home/home.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SidenavComponent } from './sidenav/sidenav.component';
 import { RouterModule } from '@angular/router';
 import { MessageService } from './message.service';
 import { CommonModule } from '@angular/common';
+
+import { HomeComponent } from './home';
+import { PageNotFoundComponent } from './page-not-found';
+import { SidenavComponent } from './sidenav';
 
 @NgModule({
   imports: [
@@ -28,4 +29,5 @@ import { CommonModule } from '@angular/common';
     MessageService
   ]
 })
-export class CoreModule { }
+export class CoreModule {
+}

@@ -1,12 +1,13 @@
-import { FormsModule } from "@angular/forms";
-import { NgModule } from "@angular/core";
+import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
 
-import { JogosRoutingModule } from "./jogos.routing";
-import { SharedModule } from "../shared/shared.module";
-import { JogosComponent } from "./jogos.component";
-import { SantosDumontComponent } from "./santos-dumont/santos-dumont.component";
-import { TacaComponent } from "./taca/taca.component";
-import { BaseJogos } from "./shared/base-jogos.component";
+import { JogosRoutingModule } from './jogos.routing';
+import { SharedModule } from '../shared/shared.module';
+import { JogosComponent } from './jogos.component';
+import { BaseJogos } from './shared';
+import { SantosDumontComponent } from './santos-dumont';
+import { TacaComponent } from './taca';
+
 
 @NgModule({
     imports: [
