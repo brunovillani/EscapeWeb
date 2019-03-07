@@ -10,7 +10,27 @@ export class JogoApiService extends BaseHttpService {
         super(http);
     }
 
-    testeComm() {
-        return this.get(['teste']);
+    start() {
+        return this.put(['command', 'start']);
+    }
+
+    stop() {
+        return this.put(['command', 'stop']);
+    }
+
+    pause() {
+        return this.put(['command', 'pause']);
+    }
+
+    restart() {
+        return this.put(['command', 'restart']);
+    }
+
+    forward() {
+        return this.put(['command', 'forward']);
+    }
+
+    backward() {
+        return this.put(['command', 'backward']);
     }
 }

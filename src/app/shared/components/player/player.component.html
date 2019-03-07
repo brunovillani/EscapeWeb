@@ -1,8 +1,16 @@
 <div class="player">
   <div class="botoes-grupo" role="group" aria-label="Basic example">
-    <button disabled="index === 0" type="button" class="btn btn-secondary" mat-button>Backward</button>
-    <button *ngIf="status === tiposStatus[0] || status === tiposStatus[2]" type="button" class="btn btn-secondary" mat-button>play</button>
-    <button type="button" class="btn btn-secondary" mat-button>stop</button>
-    <button disabled="maxIndex != null && maxIndex === index" type="button" class="btn btn-secondary" mat-button>Forward</button>
+    <button type="button" 
+      class="btn btn-secondary" (click)="backward()" mat-button>Backward</button>
+    <button *ngIf="status === statusTypes.begin || status === statusTypes.pause" type="button" 
+      class="btn btn-secondary" (click)="play()" mat-button>play</button>
+      <button *ngIf="status === statusTypes.run" type="button" 
+      class="btn btn-secondary" (click)="pause()" mat-button>pause</button>
+    <button *ngIf="status === statusTypes.run || status === statusTypes.pause" type="button" 
+      class="btn btn-secondary" (click)="stop()" mat-button>stop</button>
+    <button *ngIf="status === statusTypes.end" type="button" 
+      class="btn btn-secondary" (click)="restart()" mat-button>reset</button>
+    <button type="button" 
+      class="btn btn-secondary" (click)="forward()" mat-button>Forward</button>
   </div>
 </div>

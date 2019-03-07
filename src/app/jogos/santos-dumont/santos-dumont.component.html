@@ -4,5 +4,10 @@
     <app-icon *ngIf="logica.concluida" svgIcon="edit"></app-icon>
     <app-icon *ngIf="!logica.concluida" svgIcon="search"></app-icon>
   </div>
-  <app-player></app-player>
+  <div>
+    Indice: {{ gameIndex }}
+  </div>
+  <app-player [index]="gameIndex" [maxIndex]="6" 
+    (goForward)="goForward()" (goBackward)="goBackward()"
+    (setPlay)="play()" (setStop)="stop()" (setPause)="pause()" (setRestart)="restart()"></app-player>
 </div>

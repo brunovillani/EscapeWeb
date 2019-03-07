@@ -75,7 +75,7 @@ export class BaseHttpService {
 
         return <Observable<T>>(
             this.http
-                .post(url, body, { params: httpParams, withCredentials: true })
+                .post(url, body, { params: httpParams })
                 .pipe(
                     map(result => result),
                     catchError(error => this.catchError(error, url))
@@ -89,7 +89,7 @@ export class BaseHttpService {
 
         return <Observable<T>>(
             this.http
-                .put(url, body, { params: httpParams, withCredentials: true })
+                .put(url, body, { params: httpParams })
                 .pipe(
                     map(result => result),
                     catchError(error => this.catchError(error, url))
@@ -103,7 +103,7 @@ export class BaseHttpService {
 
         return <Observable<T>>(
             this.http
-                .delete(url, { params: httpParams, withCredentials: true })
+                .delete(url, { params: httpParams })
                 .pipe(
                     map(result => result),
                     catchError(error => this.catchError(error, url))

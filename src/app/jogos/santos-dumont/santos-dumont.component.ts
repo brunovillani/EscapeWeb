@@ -9,7 +9,7 @@ import { JogoApiService } from 'src/app/shared/services/jogo-api.service';
 })
 export class SantosDumontComponent extends BaseJogos implements OnInit {
 
-  teste: any;
+  gameIndex = 0;
   
   constructor(jogoApiService: JogoApiService) {
     super(jogoApiService);
@@ -17,7 +17,18 @@ export class SantosDumontComponent extends BaseJogos implements OnInit {
 
   ngOnInit() {
     this.logicas.push({id: 6, concluida: false});
-    this.jogoApiService.testeComm().subscribe(resposta => this.teste = resposta);
+  }
+
+  goForward() {
+    this.jogoApiService.forward().subscribe((comando) => {
+      this.gameIndex++;
+    });
+  }
+
+  goBackward() {
+    this.jogoApiService.backward().subscribe((comando) => {
+      this.gameIndex--;
+    });
   }
 
 }
