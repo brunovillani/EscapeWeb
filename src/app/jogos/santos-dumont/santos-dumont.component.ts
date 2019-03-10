@@ -16,7 +16,6 @@ export class SantosDumontComponent extends BaseJogos implements OnInit {
   }
 
   ngOnInit() {
-    this.logicas.push({id: 6, concluida: false});
   }
 
   goForward() {

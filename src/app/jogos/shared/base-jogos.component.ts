@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { JogoApiService } from 'src/app/shared/services/jogo-api.service';
+import { Main } from 'src/app/models/main';
 
 @Component({
     template: '',
@@ -8,16 +9,14 @@ import { JogoApiService } from 'src/app/shared/services/jogo-api.service';
 })
 export class BaseJogos implements OnInit {
 
-  logicas: {id: number, concluida: boolean}[] = [
-      {id: 1, concluida: true},
-      {id: 2, concluida: true},
-      {id: 3, concluida: false},
-      {id: 4, concluida: false},
-      {id: 5, concluida: false},
-  ]
+  logicas: Main.Logica[];
+  
   constructor(public jogoApiService: JogoApiService) { }
 
   ngOnInit() {
+    this.jogoApiService.obterLogicas().subscribe(logicas => {
+      
+    });
   }
 
 }

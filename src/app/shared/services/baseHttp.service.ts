@@ -1,132 +1,157 @@
-import { HttpClient, HttpParams, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpParams, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-
-import { environment } from 'src/app/environments/environments';
+import { Router } from '@angular/router';
+import { environment } from 'src/app/environments';
 import { Helper } from 'src/app/utils/helper';
 
+
+/** Type of the handleError function returned by HttpErrorHandler.createHandleError */
+export type HandleError =
+  <T> (operation?: string, result?: T) => (error: HttpErrorResponse) => Observable<T>;
+
 export class BaseHttpService {
-    
-    getHeader = new HttpHeaders();
-    constructor (
-        private http: HttpClient
-    ) {
-        this.getHeader.append('Context-type', 'text/xml')
-    }
+  getHeader: HttpHeaders;
+  constructor(
+    private http: HttpClient,
+    public router: Router,
+    private serviceName: string = ''
+  ) {
+    this.getHeader = new HttpHeaders();
+    this.getHeader.append('Content-type', 'text/xml')
+  }
 
-    //#region Data formatting
-    private getRoute(route: string | any[]): string {
-        if (!Array.isArray(route)) {
-            route = [route];
+  //#region route formatting
+  private getRoute(route: string | any[]): string {
+    if (!Array.isArray(route)) {
+      route = [route];
+    }
+    return environment.apiUrl + route.join('/');
+  }
+
+  private getHttpParams(parameters): HttpParams {
+    let params = new HttpParams();
+
+    if (parameters) {
+      Object.keys(parameters).forEach(key => {
+        if (Array.isArray(parameters[key])) {
+          parameters[key].forEach(p => {
+            if (p != null) {
+              params = params.append(key, this.getParamValue(p));
+            }
+          });
+        } else if (parameters[key] != null) {
+          params = params.append(key, this.getParamValue(parameters[key]));
         }
-        return environment.apiUrl + route.join('/');
+      });
     }
 
-    private getHttpParams(parameters): HttpParams {
-        let params = new HttpParams();
+    return params;
+  }
 
-        if (parameters) {
-            Object.keys(parameters).forEach(key => {
-                if (Array.isArray(parameters[key])) {
-                    parameters[key].forEach(p => {
-                        if (p != null) {
-                            params = params.append(key, this.getParamValue(p));
-                        }
-                    });
-                } else if (parameters[key] != null) {
-                    params = params.append(key, this.getParamValue(parameters[key]));
-                }
-            });
-        }
-
-        return params;
+  private getParamValue(value: any) {
+    if (value instanceof Date) {
+      value = Helper.datas.obterDateString(value);
+    } else {
+      value = value.toString();
     }
+    return value;
+  }
 
-    private getParamValue(value: any) {
-        if (value instanceof Date) {
-            value = Helper.datas.obterDateString(value);
-        } else {
-            value = value.toString();
-        }
-        return value;
-    }
-    //#endregion
+  private createFullUrl(url: string, httpParams: HttpParams): string {
+    const queryString = httpParams.toString();
 
-    //#region Verbs
-    protected get<T>(route: string | any[], parameters: Object = null): Observable<T> {
-        const httpParams = this.getHttpParams(parameters);
-        const url = this.getRoute(route);
+    return url + (queryString ? '?' + queryString : '');
+  }
+  //#endregion
 
-        return <Observable<T>>(
-            this.http
-                .get(url, { params: httpParams, headers: this.getHeader })
-                .pipe(
-                    map(result => 
-                        result),
-                    catchError(error => 
-                        this.catchError(error, url))
-                )
+  //#region http verbs
+  protected get<T>(route: string | any[], parameters: Object = null): Observable<T> {
+    const httpParams = this.getHttpParams(parameters);
+    const url = this.getRoute(route);
+
+    return this.http
+      .get(url, { params: httpParams, headers: this.getHeader })
+      .pipe(
+        map((data: any) => data),
+        catchError(this.handleError(this.serviceName, 'get'))
+      );
+  }
+
+  protected post<T>(route: string | any[], body: Object = null, parameters: Object = null): Observable<T> {
+    const httpParams = this.getHttpParams(parameters);
+    const url = this.getRoute(route);
+
+    return this.http
+        .post(url, body, { params: httpParams })
+        .pipe(
+          map((data: any) => data),
+          catchError(this.handleError(this.serviceName, 'post'))
         );
-    }
+  }
 
-    protected post<T>(route: string | any[], body: Object = null, parameters: Object = null): Observable<T> {
-        const httpParams = this.getHttpParams(parameters);
-        const url = this.getRoute(route);
+  protected put<T>(route: string | any[], body: Object = null, parameters: Object = null): Observable<T> {
+    const httpParams = this.getHttpParams(parameters);
+    const url = this.getRoute(route);
 
-        return <Observable<T>>(
-            this.http
-                .post(url, body, { params: httpParams })
-                .pipe(
-                    map(result => result),
-                    catchError(error => this.catchError(error, url))
-                )
+    return this.http
+        .put(url, body, { params: httpParams })
+        .pipe(
+          map((data: any) => data),
+          catchError(this.handleError(this.serviceName, 'put'))
         );
-    }
+  }
 
-    protected put<T>(route: string | any[], body: Object = null, parameters: Object = null): Observable<T> {
-        const httpParams = this.getHttpParams(parameters);
-        const url = this.getRoute(route);
+  protected delete<T>(route: string | any[], parameters: Object = null): Observable<T> {
+    const httpParams = this.getHttpParams(parameters);
+    const url = this.getRoute(route);
 
-        return <Observable<T>>(
-            this.http
-                .put(url, body, { params: httpParams })
-                .pipe(
-                    map(result => result),
-                    catchError(error => this.catchError(error, url))
-                )
+    return this.http
+        .delete(url, { params: httpParams })
+        .pipe(
+          map((data: any)=> data),
+          catchError(this.handleError(this.serviceName, 'delete'))
         );
-    }
+  }
 
-    protected delete<T>(route: string | any[], parameters: Object = null): Observable<T> {
-        const httpParams = this.getHttpParams(parameters);
-        const url = this.getRoute(route);
+  protected patch<T>(route: string | any[], parameters: Object = null): Observable<T> {
+    const httpParams = this.getHttpParams(parameters);
+    const url = this.getRoute(route);
 
-        return <Observable<T>>(
-            this.http
-                .delete(url, { params: httpParams })
-                .pipe(
-                    map(result => result),
-                    catchError(error => this.catchError(error, url))
-                )
+    return this.http
+        .patch(url, { params: httpParams })
+        .pipe(
+          map((data: any) => data),
+          catchError(this.handleError(this.serviceName, 'patch'))
         );
-    }
+  }
+  //#endregion
 
-    protected patch<T>(route: string | any[], parameters: Object = null): Observable<T> {
-        const httpParams = this.getHttpParams(parameters);
-        const url = this.getRoute(route);
+  //#region exception
 
-        return <Observable<T>>(
-            this.http
-                .patch(url, { params: httpParams })
-                .pipe(
-                    map(result => result),
-                    catchError(error => this.catchError(error, url))
-                )
-        );
-    }
-    //#endregion
+  /**
+   * Returns a function that handles Http operation failures.
+   * This error handler lets the app continue to run as if no error occurred.
+   * @param serviceName = name of the data service that attempted the operation
+   * @param operation - name of the operation that failed
+   * @param result - optional value to return as the observable result
+   */
+  private handleError<T> (serviceName = '', operation = 'operation', result = {} as T) {
 
-    private catchError(error: HttpErrorResponse, url: string): Observable<any> {
-        return Observable.throw(error);
-    }
+    return (error: HttpErrorResponse): Observable<T> => {
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // const message = (error.error instanceof ErrorEvent) ?
+      //   error.error.message :
+      //  `server returned code ${error.status} with body "${error.error}"`;
+
+      // TODO: better job of transforming error for user consumption
+      // this.messageService.showMessage(`${serviceName}: ${operation} failed: ${message}`);
+
+      // Let the app keep running by returning a safe result.
+      return of( result );
+    };
+  }
+  //#endregion
 }
