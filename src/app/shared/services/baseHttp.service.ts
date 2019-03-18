@@ -18,7 +18,7 @@ export class BaseHttpService {
     private serviceName: string = ''
   ) {
     this.getHeader = new HttpHeaders();
-    this.getHeader.append('Content-type', 'text/xml')
+    this.getHeader.append('Content-type', 'application/json')
   }
 
   //#region route formatting
@@ -73,7 +73,7 @@ export class BaseHttpService {
     return this.http
       .get(url, { params: httpParams, headers: this.getHeader })
       .pipe(
-        map((data: any) => data),
+        map((data: any) => { return data; }),
         catchError(this.handleError(this.serviceName, 'get'))
       );
   }
@@ -85,7 +85,7 @@ export class BaseHttpService {
     return this.http
         .post(url, body, { params: httpParams })
         .pipe(
-          map((data: any) => data),
+          map((data: any) => { return data; }),
           catchError(this.handleError(this.serviceName, 'post'))
         );
   }
@@ -97,7 +97,7 @@ export class BaseHttpService {
     return this.http
         .put(url, body, { params: httpParams })
         .pipe(
-          map((data: any) => data),
+          map((data: any) => { return data; }),
           catchError(this.handleError(this.serviceName, 'put'))
         );
   }
@@ -109,7 +109,7 @@ export class BaseHttpService {
     return this.http
         .delete(url, { params: httpParams })
         .pipe(
-          map((data: any)=> data),
+          map((data: any) => { return data; }),
           catchError(this.handleError(this.serviceName, 'delete'))
         );
   }
